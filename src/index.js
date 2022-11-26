@@ -6,7 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const inputElement = document.querySelector('input#search-box');
 const countryInfoElement = document.querySelector('.country-info');
 const countryList = document.querySelector('.country-list');
-const DEBOUNCE_DELAY = 800;
+const DEBOUNCE_DELAY = 300;
 const filterFields = ['name', 'capital', 'population', 'flags', 'languages'];
 
 let debounceCallback = debounce(inputEventCallback, DEBOUNCE_DELAY);
@@ -44,9 +44,15 @@ function createMarkupCountry(countryJson) {
   countryInfoElement.innerHTML = `<h2 class="country-info__header"> <img src="${
     countryJson.flags.svg
   }" alt="${countryJson.name}" height="50">${countryJson.name}</h2>
-      <div class="country-info__item"><b>Capital:</b> ${countryJson.capital}</div>
-      <div class="country-info__item"><b>Population:</b> ${countryJson.population}</div>
-      <div class="country-info__item"><b>Languages:</b> ${countryLanguages.join(', ')}</div>
+      <div class="country-info__item"><b>Capital:</b> ${
+        countryJson.capital
+      }</div>
+      <div class="country-info__item"><b>Population:</b> ${
+        countryJson.population
+      }</div>
+      <div class="country-info__item"><b>Languages:</b> ${countryLanguages.join(
+        ', '
+      )}</div>
     </div>`;
 }
 function lenguagesCallback(currentValue) {
